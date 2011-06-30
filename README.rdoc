@@ -4,8 +4,9 @@ Work In Progress
 
 == TODO
 
+* Implement XML fetching
 * A bit of refactoring (commenting, move thing up and down and all around...)
-* Implement XMl fetching
+* Have I implemented errors managing before??? Who knows!
 * ADD TESTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 == License
