@@ -1,9 +1,14 @@
+require 'psych'
 require 'echoe'
 
 Echoe.new("rfql") do |p|
   p.author = "De Santis Maurizio"
-  p.summary = "RFQL - Ruby interface for Facebook Query Language"
-  p.runtime_dependencies = ["string_tools >=1.4.0"]
+  p.email = 'desantis.maurizio@gmail.com'
+  p.description = "RFQL - Ruby interface for Facebook Query Language"
+  p.summary =<<-SMY
+It lets you use ORM-style code for fetching data 
+from Facebook through the Facebook Query Language
+  SMY
   p.project = 'https://github.com/ProGNOMmers/rfql'
 end
 
