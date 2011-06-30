@@ -1,0 +1,7 @@
+= RFQL - Ruby interface for Facebook Query Language
+
+WIP - Stay tuned...
+
+== License
+
+MIT (see LICENSE)
