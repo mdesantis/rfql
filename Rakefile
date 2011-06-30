@@ -2,7 +2,7 @@ require 'psych'
 require 'echoe'
 
 Echoe.new("rfql") do |p|
-  p.project     = 'http://github.com/ProGNOMmers/rfql'
+  p.project     = 'rfql'
   p.author      = "De Santis Maurizio"
   p.email       = 'desantis.maurizio@gmail.com'
   p.description = "RFQL - Ruby interface for Facebook Query Language"
