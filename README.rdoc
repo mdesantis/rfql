@@ -1,6 +1,6 @@
 = RFQL - Ruby interface for Facebook Query Language
 
-WIP - Stay tuned...
+Work In Progress
 
 == License
 
