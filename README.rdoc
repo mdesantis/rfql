@@ -2,6 +2,12 @@
 
 Work In Progress
 
+== TODO
+
+* A bit of refactoring (commenting, move thing up and down and all around...)
+* Implement XMl fetching
+* ADD TESTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 == License
 
 MIT (see LICENSE)
