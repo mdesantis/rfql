@@ -1,3 +1,4 @@
+require 'json'
 require 'rfql/response/json/raw'
 require 'rfql/response/json/parsed'
 require 'rfql/response/json/parsed/records'

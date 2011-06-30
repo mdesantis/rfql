@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'json'
-
 require 'rfql/core_ext/object/blank'
 require 'rfql/query'
 require 'rfql/request/delegations'

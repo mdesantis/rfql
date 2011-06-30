@@ -1,3 +1,5 @@
+require 'open-uri'
+
 require 'rfql/response/json'
 require 'rfql/response/fql_error'
 
@@ -13,7 +15,7 @@ module RFQL
             options[:format] = options[:format] == :json_raw ? :raw : :parsed
             RFQL::Response::JSON.new(request, options)
           when :xml
-            raise NotImplementedError
+            raise NotImplementedError, 'xml fetching is still a WIP :-P'
         end
       end
       def read(request, options = {})
