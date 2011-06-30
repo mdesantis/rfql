@@ -9,7 +9,6 @@ Echoe.new("rfql") do |p|
 It lets you use ORM-style code for fetching data 
 from Facebook through the Facebook Query Language
   SMY
-  p.project = 'http://github.com/ProGNOMmers/rfql'
 end
 
 #task :default => :irb
