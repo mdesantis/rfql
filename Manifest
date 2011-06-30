@@ -18,4 +18,3 @@ lib/rfql/response/json/parsed/error.rb
 lib/rfql/response/json/parsed/null.rb
 lib/rfql/response/json/parsed/records.rb
 lib/rfql/response/json/raw.rb
-rfql.gemspec
