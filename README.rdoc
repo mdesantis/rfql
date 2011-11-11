@@ -1,6 +1,6 @@
 = RFQL - Ruby API for the {Facebook Query Language}[https://developers.facebook.com/docs/reference/fql/]
 
-*Work In Progress - things can change (and probably they will do)*
+<b>Work In Progress - things can change (and probably they will do)</b>
 
 == Features
 
