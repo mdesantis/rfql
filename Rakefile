@@ -9,7 +9,7 @@ Echoe.new("rfql") do |p|
   p.summary     = "It lets you use ORM-style code for fetching data from Facebook through the Facebook Query Language"
 end
 
-#task :default => :irb
+desc 'IRB console'
 task :irb do
   $LOAD_PATH << "#{Dir.pwd}/lib"
   require 'rfql'

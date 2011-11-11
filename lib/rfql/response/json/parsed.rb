@@ -1,3 +1,4 @@
+require 'json'
 module RFQL
   module Response
     class JSON
