@@ -1,12 +1,23 @@
-= RFQL - Ruby interface for Facebook Query Language
+= RFQL - Ruby API for the {Facebook Query Language}[https://developers.facebook.com/docs/reference/fql/]
 
-Work In Progress
+*Work In Progress - things can change (and probably they will do)*
+
+== Features
+
+* RFQL API uses a simple, yet powerful syntax, heavily ispired by ActiveRecord and AREL projects.
+
+== Installation
+
++gem install rfql --prerelease+
+
+== Usage / Examples
 
 == TODO
 
 * Implement XML fetching
-* A bit of refactoring (commenting, move thing up and down and all around...)
-* Have I implemented errors managing before??? Who knows!
+* Did I already implement errors managing??? Who knows!
+* A bit of refactoring
+* Documentation
 * ADD TESTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 == License
