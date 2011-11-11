@@ -22,4 +22,4 @@
 
 == License
 
-MIT (see LICENSE)
+MIT (see {LICENSE}[https://github.com/ProGNOMmers/rfql/blob/master/LICENSE])
