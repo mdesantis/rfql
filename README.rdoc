@@ -8,7 +8,7 @@
 
 == Installation
 
-+gem install rfql --prerelease+
+<tt>gem install rfql --prerelease</tt>
 
 == Usage / Examples
 
