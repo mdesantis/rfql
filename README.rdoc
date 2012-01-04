@@ -12,7 +12,10 @@
 
 == Usage / Examples
 
+    # The query object
     request = RFQL.request.select('aid, owner, name, object_id').from('album').where(aid: "20531316728_324257")
+    
+    # Retrieving the JSON data response
     request.fetch.response #=> {"data"=>[{"aid"=>"20531316728_324257", "owner"=>20531316728, "name"=>"Happy Lunar New Year 2011", "object_id"=>"10150146071791729"}]}
 
 == TODO
