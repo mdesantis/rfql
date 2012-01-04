@@ -1,6 +1,6 @@
 = RFQL - Ruby API for the {Facebook Query Language}[https://developers.facebook.com/docs/reference/fql/]
 
-<b>Work In Progress - things can change (and probably they will do)</b>
+<b>Work In Progress - things can change (and probably they will)</b>
 
 == Features
 
@@ -12,13 +12,18 @@
 
 == Usage / Examples
 
+<tt>
+request = RFQL.request.select('aid, owner, name, object_id').from('album').where(aid: "20531316728_324257")
+request.fetch.response #=> {"data"=>[{"aid"=>"20531316728_324257", "owner"=>20531316728, "name"=>"Happy Lunar New Year 2011", "object_id"=>"10150146071791729"}]}
+</tt>
+
 == TODO
 
-* Implement XML fetching
-* Did I already implement errors managing??? Who knows!
-* A bit of refactoring
+* Add more examples
+* Have I already implemented errors managing? Who knows!
+* Refactoring
 * Documentation
-* ADD TESTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+* ADD TESTS!!!
 
 == License
 

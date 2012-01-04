@@ -7,11 +7,12 @@ module RFQL
   class Request
     include RFQL::Request::QueryMethodsDelegations
     
+    FQLURL = "https://graph.facebook.com/fql"
+    
     attr_reader :response
     
     def initialize(str = nil)
       @query = RFQL::Query.new(str)
-      @format_param = :json
     end
     
     def query(query = nil)
@@ -30,42 +31,32 @@ module RFQL
       self
     end
     
-    def format_param(format_param = nil)
-      return @format_param if format_param.nil?
-      raise ArgumentError, "illegal format" unless [:json, :xml].include?(format_param)
-      @format_param = format_param
-      self
+    def params
+      {:q => to_sql, :access_token => access_token}
     end
     
-    def params(with_format_param = false)
-      params = {:query => to_sql, :access_token => access_token}
-      return params unless with_format_param
-      params.merge(:format => @format_param)
-    end
-    
-    def to_url(with_format_param = false)
-      RFQL::FQLURL + '?' + hash_to_params_string(params(with_format_param))
+    def to_url
+      FQLURL + '?' + hash_to_params_string(params)
     end
     
     def hash_to_params_string(params)
       params.to_a.select do |param|
         param[0].present? and param[1].present?
       end.map do |param|
-        k, v = URI.escape(param[0].to_s), URI.escape(param[1].to_s)
-        k.gsub!('&', '%26'); k.gsub!('=', '%3D'); v.gsub!('&', '%26'); v.gsub!('=', '%3D')
-        "#{k}=#{v}"
+        "%s=%s" % [CGI.escape(param[0].to_s), CGI.escape(param[1].to_s)]
       end.join('&')
     end
     
-    def to_json(json_format = :parsed, options = {})
+    def fetch(json_format = :parsed, options = {})
       begin
-        to_json!(json_format, options)
+        fetch!(json_format, options)
       rescue RFQL::Response::FQLError
         nil
       end
     end
     
-    def to_json!(json_format = :parsed, options = {})
+    # Example: RFQL.request.query('SELECT aid, owner, name, object_id FROM album WHERE aid="20531316728_324257"').fetch
+    def fetch!(json_format = :parsed, options = {})
       raise ArgumentError, "illegal format" unless [:raw, :parsed].include?(json_format)
       unless options.is_a?(Hash) and (options.keys - [:open_uri_options, :json_parse_options, :force_execution]).blank?
         raise ArgumentError, "illegal options"

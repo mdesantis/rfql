@@ -1,8 +1,7 @@
 require 'rfql/query'
 require 'rfql/request'
 module RFQL
-  VERSION = '0.1.alpha.2'
-  FQLURL = "https://api.facebook.com/method/fql.query"
+  VERSION = '0.1.alpha.4'
   def self.request(obj = nil)
     RFQL::Request.new(obj)
   end
