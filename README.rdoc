@@ -12,10 +12,10 @@
 
 == Usage / Examples
 
-<tt>
+```ruby
 request = RFQL.request.select('aid, owner, name, object_id').from('album').where(aid: "20531316728_324257")
 request.fetch.response #=> {"data"=>[{"aid"=>"20531316728_324257", "owner"=>20531316728, "name"=>"Happy Lunar New Year 2011", "object_id"=>"10150146071791729"}]}
-</tt>
+```
 
 == TODO
 
