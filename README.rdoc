@@ -12,6 +12,8 @@
 
 == Usage / Examples
 
+    require 'rfql'
+
     # The query object
     request = RFQL.request.select('aid, owner, name, object_id').from('album').where(aid: "20531316728_324257")
     
