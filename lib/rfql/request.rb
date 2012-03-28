@@ -47,37 +47,42 @@ module RFQL
       end.join('&')
     end
     
-    def fetch(json_format = :parsed, options = {})
+    def response(json_format = :parsed, options = {})
       begin
-        fetch!(json_format, options)
+        response!(json_format, options)
       rescue RFQL::Response::FQLError
         nil
       end
     end
     
-    # Example: RFQL.request.query('SELECT aid, owner, name, object_id FROM album WHERE aid="20531316728_324257"').fetch
-    def fetch!(json_format = :parsed, options = {})
+    # Examples:
+    #   RFQL.request.select('aid, owner, name, object_id').from('album').where(:aid => "20531316728_324257").response
+    #   RFQL.request.query('SELECT aid, owner, name, object_id FROM album WHERE aid="20531316728_324257"').response
+    def response!(json_format = :parsed, options = {})
       raise ArgumentError, "illegal format" unless [:raw, :parsed].include?(json_format)
+      
       unless options.is_a?(Hash) and (options.keys - [:open_uri_options, :json_parse_options, :force_execution]).blank?
         raise ArgumentError, "illegal options"
       end
       
-      if options.delete(:force_execution).blank? and @response and
-         ( ( json_format == :parsed and ( @response.is_a?(RFQL::Response::JSON::Parsed) or
-                                          @response.is_a?(RFQL::Response::JSON::Parsed::Records) or
-                                          @response.is_a?(RFQL::Response::JSON::Parsed::Error) ) ) or
-           ( json_format == :raw and @response.is_a?(RFQL::Response::JSON::Raw) ) )
-        return @response
+      if not options.delete(:force_execution) and @cached_response
+        case json_format
+        when :raw    then return @cached_response.raw
+        when :parsed then return @cached_response
+        end
       end
       
-      json_parse_opts = options[:json_parse_options] || {}
-      open_uri_read_opts = options[:open_uri_options] || {}
+      json_parse_opts    = options[:json_parse_options] || {}
+      open_uri_read_opts = options[:open_uri_options]   || {}
       
-      @response = RFQL::Response::JSON.new(self, options.merge(:format => json_format))
+      @cached_response = RFQL::Response::JSON.new self, options.merge(:format => :parsed)
       
-      raise RFQL::Response::FQLError.new(@response) if @response.is_a?(RFQL::Response::JSON::Parsed::Error)
+      raise RFQL::Response::FQLError.new(@cached_response) if @cached_response.is_a?(RFQL::Response::JSON::Parsed::Error)
       
-      @response
+      case json_format
+      when :raw    then @cached_response.raw
+      when :parsed then @cached_response
+      end
     end
   end
 end

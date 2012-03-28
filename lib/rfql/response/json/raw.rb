@@ -3,10 +3,9 @@ module RFQL
     class JSON
       class Raw < String
         attr_reader :request
-        def initialize(request, options = {})
+        def initialize(request, open_uri_options = {})
           @request = request
-          options[:format] = :json
-          super RFQL::Response.read(request, options)
+          super RFQL::Response.read(request, open_uri_options)
         end
       end
     end

@@ -3,9 +3,9 @@ module RFQL
     class JSON
       class Parsed
         class Records < Array
-          attr_reader :request
-          def initialize(request, array)
-            @request = request
+          attr_reader :request, :raw
+          def initialize(request, raw, array)
+            @request, @raw = request, raw
             super(array)
           end
         end
