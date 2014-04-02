@@ -5,19 +5,19 @@ require 'rfql/response'
 
 module RFQL
   class Request
-    include RFQL::Request::QueryMethodsDelegations
+    include QueryMethodsDelegations
     
     FQLURL = "https://graph.facebook.com/fql"
     
     attr_reader :response
     
     def initialize(str = nil)
-      @query = RFQL::Query.new(str)
+      @query = Query.new(str)
     end
     
     def query(query = nil)
       return @query if query.nil?
-      @query = RFQL::Query.new(query)
+      @query = Query.new(query)
       self
     end
       
@@ -50,7 +50,7 @@ module RFQL
     def response(json_format = :parsed, options = {})
       begin
         response!(json_format, options)
-      rescue RFQL::Response::FQLError
+      rescue Response::FQLError
         nil
       end
     end
@@ -75,9 +75,9 @@ module RFQL
       json_parse_opts    = options[:json_parse_options] || {}
       open_uri_read_opts = options[:open_uri_options]   || {}
       
-      @cached_response = RFQL::Response::JSON.new self, options.merge(:format => :parsed)
+      @cached_response = Response::JSON.new self, options.merge(:format => :parsed)
       
-      raise RFQL::Response::FQLError.new(@cached_response) if @cached_response.is_a?(RFQL::Response::JSON::Parsed::Error)
+      raise Response::FQLError.new(@cached_response) if @cached_response.is_a?(RFQL::Response::JSON::Parsed::Error)
       
       case json_format
       when :raw    then @cached_response.raw

@@ -1,11 +1,14 @@
-require 'rfql/query'
-require 'rfql/request'
 module RFQL
-  VERSION = '0.1.alpha.5'
+
+  require 'rfql/version'
+  require 'rfql/query'
+  require 'rfql/request'
+
   def self.request(obj = nil)
-    RFQL::Request.new(obj)
+    Request.new(obj)
   end
+
   def self.query(obj = nil)
-    RFQL::Query.new(obj)
+    Query.new(obj)
   end
 end
