@@ -1,4 +1,6 @@
-require 'rfql/core_ext/object/blank'
+require 'active_support/core_ext/object/blank'
+
+require 'rfql'
 require 'rfql/query'
 require 'rfql/request/delegations'
 require 'rfql/response'

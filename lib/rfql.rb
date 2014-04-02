@@ -1,5 +1,4 @@
 module RFQL
-
   require 'rfql/version'
   require 'rfql/query'
   require 'rfql/request'
